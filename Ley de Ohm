@@ -1,7 +1,7 @@
 Ley de Ohm 
-V=voltaje
-I=intensidad
-R=resistencia
+V=voltaje: Potencia electrica de cierto aparato
+I=intensidad:Grado de energia con el que se hace algo
+R=resistencia:Oposicion que muestra un conductor de energia al paso de corriente electrica
 V=I x R
 I=V : R
 R=V : I
