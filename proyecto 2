@@ -1,0 +1,35 @@
+En el proyecto 2 lo que hicimos fue en primer lugar conectar el positivo a la clavija de 5 voltios y el negativo al primer ground
+
+despues conectamos los cables amarillos con las resistencias de 220 ohmios al lado despues pusimos el puente para que pase la eletricidad 
+
+y pusimos una resistencia de 10 k ohmios para que aguante toda la carga electrica aparte de poner el cable verde de conexion a continuacion pusimos las
+
+tres bombillas dos rojas y una verde y el pulsador mas un simple codigo y listo la funcion que hace es que cuando le das al pulsador
+
+y se encienden las luces rojas y cuando sueltas se enciende solo la verde
+el codigo es tal que asi
+
+int switchState = 0;
+void setup(){
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(2,INPUT);
+}
+void loop(){
+  switchState = digitalRead(2);
+  if(switchState == LOW) {
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+  }
+  else {
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, HIGH);
+    delay(250);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, LOW);
+    delay(250);
+  }
+}
