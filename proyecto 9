@@ -1,0 +1,26 @@
+Primero ponemos el positivo al 5v y el negativo al ground despues ponemos dos cables verdes uno desde el 2 hasta la protoboard y el otro desde un lado de
+
+la protoboard despues pones el cable amarillo desde el 9 hasta la protoboard tambien tienes que poner un cable negro desde el negativo hasta el negativo
+
+del otro lado .Despues pones los puentes de conexion mas la resistencia de 10k ohmios y pones el pulsador y el transitor.Para acabar ponemos la bateria y 
+
+el motor de cc y el diodo y listo.
+
+Sirve para que cuando le des al boton el motor gire.
+
+const int switchPin = 2;
+const int motorPin = 9;
+int switchState = 0;
+void setup() {
+  pinMode(motorPin,OUTPUT);
+  pinMode(switchPin, INPUT);
+}
+void loop(){
+  switchState = digitalRead(switchPin);
+  if(switchState == HIGH) {
+    digitalWrite(motorPin, HIGH);
+  }
+  else {
+    digitalWrite(motorPin, LOW);
+  }
+}
