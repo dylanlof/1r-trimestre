@@ -1,2 +1,32 @@
 Para comenzar ponemos el positivo al apartado de 5v y el negativo al ground despues ponemos el cable amarillo desde el 8 hasta la protoboard
-mas un cable verde que va desde el A0 hasta la protoboard
+
+mas un cable verde que va desde el A0 hasta la protoboard despues ponemos el piezo y 4 resistencias, una de 220 ohmios, 2 de 10k ohmios y otra de 
+
+1 megaohmios. A continuacion ponemos los puentes de conexion en vertical y ponemos los cuatro pulsadores y listo.
+
+Sirve como un instrumento basicamente un piano.
+
+
+int notes[] = {262,294,330,349};
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  int keyVal = analogRead(A0);
+  Serial.println(keyVal);
+  if(keyVal == 1023){
+    tone(8, notes[0]);
+  }
+  else if(keyVal >= 990 && keyVal <= 1010){
+    tone(8, notes[1]);
+  }
+  else if(keyVal >= 505 && keyVal <= 515){
+    tone(8, notes[2]);
+  }
+  else if(keyVal >= 5 && keyVal <= 10){
+    tone(8, notes[3]);
+  }
+  else{
+    noTone(8);
+  }
+}
