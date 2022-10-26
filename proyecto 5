@@ -1,0 +1,27 @@
+En primer lugar ponemos el positivo a la ranura de 5v y el negativo al ground . Despues ponemos un cable amarillo desde el A0 y despues ponemos los puentes
+
+de conexion mas el cable verde desde el 9 del arduino .Necesitamos dos condensadores uno en las dos clavijas al lado de el cable amarillo y otro en el 
+
+limite de la mitad de la protoboard, ponemos el servomotor y un potenciometro y listo. Sirve para que cuando tu gires el potenciometro el servomotor gire
+
+en la misma direccion y a la misma velocidad.
+
+#include <Servo.h>
+Servo myServo;
+int const potPin = A0;
+int potVal;
+int angle;
+void setup() {
+  myServo.attach(9);
+  Serial.begin(9600);
+}
+void loop() {
+  potVal = analogRead(potPin);
+  Serial.print("potVal: ");
+  Serial.print(potVal);
+  angle = map(potVal, 0, 1023, 0, 179);
+  Serial.print(",angle: ");
+  Serial.println(angle);
+  myServo.write(angle);
+  delay(15);
+}
