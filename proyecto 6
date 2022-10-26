@@ -1,7 +1,7 @@
 Para comenzar ponemos el positivo a la ranura de 5v y el negativo al ground .Despues conectamos un cable amarillo desde el 8 hasta la protoboard, ponemos
 
 el puente de conexion abajo mas el cable verde desde el A0 y una resistencia de 10k ohmios.Despues ponemos el fototransitor y el piezo y listo el circuito
-
+y sirve para que cuando le entre luz al fototransitor el piezo suene de una forma o de otra
 
 int sensorValue;
 int sensorLow = 1023;
