@@ -1,0 +1,55 @@
+En primer lugar ponemos el positivo a la ranura de 5v y el negativo al ground despues ponemos un cable rojo desde el positivo de un lado de la protoboard
+
+hasta el otro lado.Despues ponemos tres cables amarillos desde el 9, 10, 11 del arduino hastalas clavijas de la protoboard despues ponemos un cable 
+
+desde el negativo .A continuacion ponemos 3 resitencias de 220 ohmios.Mas abajo ponemos 3 cables 
+
+verdes desde el A0, A1, y A2 los llevas hasta la protoboard pones tres resistencias de 10 k ohmios y enfrente de cada resistencia de 10k ohmios
+
+ponemos tres fototransitores y en frente de las resistencias de 220 ohmios ponemos un led RGB dejando el catodo en la misnma linea de clavijas
+
+que el cable negro.Sirve para cuando cambies de color los fototransitores el led RGB cambiara de color segun lo que tengan puesto los fototransitores.
+
+const int greenLEDPin = 9;
+const int redLEDPin = 11;
+const int blueLEDPin = 10;
+const int redSensorPin = A0;
+const int greenSensorPin = A1;
+const int blueSensorPin = A2;
+int redValue = 0;
+int greenValue = 0;
+int blueValue = 0;
+int redSensorValue = 0;
+int greenSensorValue = 0;
+int blueSensorValue =0;
+void setup () {
+  Serial.begin(9600);
+  pinMode(greenLEDPin,OUTPUT);
+  pinMode(redLEDPin,OUTPUT);
+  pinMode(blueLEDPin,OUTPUT);
+}
+void loop() {
+  redSensorValue = analogRead(redSensorPin);
+  delay(5);
+  greenSensorValue = analogRead(greenSensorPin);
+  delay(5);
+  blueSensorValue = analogRead(blueSensorPin);
+  Serial.print("Raw Sensor Values \t Red ");
+  Serial.print(redSensorValue);
+  Serial.print("\t Green: ");
+  Serial.print(greenSensorValue);
+  Serial.print("\t Blue: ");
+  Serial.println(blueSensorValue);
+  redValue = redSensorValue/4;
+  greenValue = greenSensorValue/4;
+  blueValue = blueSensorValue/4;
+  Serial.print("Mapped Sensor Values \t Red: ");
+  Serial.print(redValue);
+  Serial.print("\t Green: ");
+  Serial.print(greenValue);
+  Serial.print("\t Blue: ");
+  Serial.println(blueValue);
+  analogWrite(redLEDPin, redValue);
+  analogWrite(greenLEDPin, greenValue);
+  analogWrite(blueLEDPin, blueValue);
+}
